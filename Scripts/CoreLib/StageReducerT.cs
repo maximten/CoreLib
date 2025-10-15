@@ -13,13 +13,16 @@ namespace CoreLib
         
         public StageT PrevStage;
         public StageT Stage;
+
+        public static event Action<StageT> OnStageChange;
         
         void Awake()
         {
             Current = this;
+            OnStageChange += ChangeStage;
         }
         
-        public void ChangeStage(StageT stage)
+        void ChangeStage(StageT stage)
         {
             if (Equals(PrevStage, stage))
                 return;
@@ -43,6 +46,11 @@ namespace CoreLib
         public void AddExitAction(StageT stage, Action action)
         {
             _stageExitActions[stage] = action;
+        }
+
+        public static void EmitStageChange(StageT stage)
+        {
+            OnStageChange?.Invoke(stage);
         }
     }
 }
