@@ -6,12 +6,17 @@ namespace CoreUI
 {
     public class UIComponentT<KeyT> : MonoBehaviour where KeyT : Enum
     {
-        [SerializeField] public KeyT UIName;
-        [SerializeField] protected UIDocument document;
+        public KeyT UIName;
+        protected UIDocument document;
 
         protected Action _afterEnable;
         protected Action _beforeDisable;
-        
+
+        private void Awake()
+        {
+            document = GetComponent<UIDocument>();
+        }
+
         private void OnEnable()
         {
             _afterEnable?.Invoke();
