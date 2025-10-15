@@ -1,0 +1,28 @@
+.container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.button {
+    background-color: rgba(0, 0, 0, 0);
+    border-width: 0;
+    padding: 0;
+    margin: 0;
+    -unity-background-scale-mode: scale-to-fit;
+    justify-content: center;
+}
+
+.row {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.column {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
