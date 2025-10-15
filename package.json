@@ -1,0 +1,8 @@
+{
+  "name": "maximten.core.lib",
+  "version": "1.0.0",
+  "displayName": "Core Lib",
+  "dependencies": {
+    "com.unity.addressables": "2.7.4"
+  }
+}
