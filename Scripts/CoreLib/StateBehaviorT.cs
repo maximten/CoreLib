@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace CoreLib
 {
-    public class StateBehaviorT<KeyT> where KeyT : Enum
+    public class StateBehaviorT<KeyT> : MonoBehaviour where KeyT : Enum
     {
         private Dictionary<KeyT, bool> _boolMap = new();
         private Dictionary<KeyT, int> _intMap = new();
@@ -28,6 +29,11 @@ namespace CoreLib
                 _boolCallbacks.Add(key, new List<Action<bool>>());
             }
             _boolCallbacks[key].Add(callback);
+        }
+
+        public void UnsubscribeBool(KeyT key, Action<bool> callback)
+        {
+            _boolCallbacks[key].Remove(callback);
         }
 
         public bool GetBool(KeyT key)
@@ -68,6 +74,11 @@ namespace CoreLib
             _intCallbacks[key].Add(callback);
         }
 
+        public void UnsubscribeInt(KeyT key, Action<int> callback)
+        {
+            _intCallbacks[key].Remove(callback);
+        }
+
         public int GetInt(KeyT key)
         {
             if (!_intMap.ContainsKey(key))
@@ -104,6 +115,11 @@ namespace CoreLib
                 _floatCallbacks.Add(key, new List<Action<float>>());
             }
             _floatCallbacks[key].Add(callback);
+        }
+
+        public void UnsubscribeFloat(KeyT key, Action<float> callback)
+        {
+            _floatCallbacks[key].Remove(callback);
         }
 
         public float GetFloat(KeyT key)
@@ -144,6 +160,11 @@ namespace CoreLib
             _stringCallbacks[key].Add(callback);
         }
 
+        public void UnsubscribeString(KeyT key, Action<string> callback)
+        {
+            _stringCallbacks[key].Remove(callback);
+        }
+
         public string GetString(KeyT key)
         {
             if (!_stringMap.ContainsKey(key))
@@ -180,6 +201,11 @@ namespace CoreLib
                 _objectCallbacks.Add(key, new List<Action<object>>());
             }
             _objectCallbacks[key].Add(callback);
+        }
+
+        public void UnsubscribeObject(KeyT key, Action<object> callback)
+        {
+            _objectCallbacks[key].Remove(callback);
         }
 
         public object GetObject(KeyT key)

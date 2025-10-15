@@ -49,5 +49,10 @@ namespace CoreUI
             button.clickable = null;
             button.RegisterCallback(onClick);
         }
+
+        protected T Find<T>(string elName) where T : VisualElement
+        {
+            return document.rootVisualElement.Q<T>(elName);
+        }
     }
 }
