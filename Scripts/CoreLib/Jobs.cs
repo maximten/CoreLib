@@ -35,7 +35,7 @@ namespace CoreLib
         {
             while (true)
             {
-                yield return new WaitForEndOfFrame();
+                yield return null;
                 if (_queue.Count == 0)
                     continue;
                 var job = _queue.Dequeue();
