@@ -25,5 +25,11 @@ namespace CoreLib
             }
             return result;
         }
+        
+        public static float EaseOutBack(float t, float s = 2.5f)
+        {
+            t -= 1f;
+            return t * t * ((s + 1) * t + s) + 1f;
+        }
     }
 }

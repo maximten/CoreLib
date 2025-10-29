@@ -1,6 +1,6 @@
 using System;
+using Newtonsoft.Json;
 using UnityEngine;
-using Unity.Plastic.Newtonsoft.Json;
 
 namespace CoreLib
 {

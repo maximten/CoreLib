@@ -24,17 +24,16 @@ namespace CoreLib
         
         void ChangeStage(StageT stage)
         {
-            if (Equals(PrevStage, stage))
+            if (Equals(Stage, stage))
                 return;
-            if (_stageExitActions.ContainsKey(PrevStage))
+            if (_stageExitActions.ContainsKey(Stage))
             {
-                _stageExitActions[PrevStage]();
+                _stageExitActions[Stage]();
             }
             if (_stageEnterActions.ContainsKey(stage))
             {
                 _stageEnterActions[stage]();
             }
-            PrevStage = Stage;
             Stage = stage;
         }
 

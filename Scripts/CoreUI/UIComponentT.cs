@@ -7,24 +7,11 @@ namespace CoreUI
     public class UIComponentT<KeyT> : MonoBehaviour where KeyT : Enum
     {
         public KeyT UIName;
-        protected UIDocument document;
+        protected UIDocument _document;
 
-        protected Action _afterEnable;
-        protected Action _beforeDisable;
-
-        private void Awake()
+        protected void Awake()
         {
-            document = GetComponent<UIDocument>();
-        }
-
-        private void OnEnable()
-        {
-            _afterEnable?.Invoke();
-        }
-
-        private void OnDisable()
-        {
-            _beforeDisable?.Invoke();
+            _document = GetComponent<UIDocument>();
         }
 
         protected void Toggle(VisualElement el, bool shouldShow)
@@ -39,20 +26,20 @@ namespace CoreUI
 
         protected void OnClick(string elName, Action onClick)
         {
-            var button = document.rootVisualElement.Q<Button>(elName);
+            var button = _document.rootVisualElement.Q<Button>(elName);
             button.clicked += onClick;
         }
 
         protected void OnClickInstant(string elName, EventCallback<PointerDownEvent> onClick)
         {
-            var button = document.rootVisualElement.Q<Button>(elName);
+            var button = _document.rootVisualElement.Q<Button>(elName);
             button.clickable = null;
             button.RegisterCallback(onClick);
         }
 
         protected T Find<T>(string elName) where T : VisualElement
         {
-            return document.rootVisualElement.Q<T>(elName);
+            return _document.rootVisualElement.Q<T>(elName);
         }
     }
 }
