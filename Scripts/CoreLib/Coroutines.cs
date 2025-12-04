@@ -50,7 +50,7 @@ namespace CoreLib
                 c -= step == 0 ? Time.deltaTime : step;
                 if (step == 0)
                 {
-                    yield return new WaitForEndOfFrame();
+                    yield return null;
                 }
                 else
                 {

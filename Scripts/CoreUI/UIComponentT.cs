@@ -41,5 +41,10 @@ namespace CoreUI
         {
             return _document.rootVisualElement.Q<T>(elName);
         }
+
+        public UIDocument GetDocument()
+        {
+            return _document;
+        }
     }
 }

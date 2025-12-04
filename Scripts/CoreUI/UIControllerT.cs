@@ -9,11 +9,11 @@ namespace CoreUI
     {
         public static UIControllerT<KeyT> Current;
 
-        private Dictionary<KeyT, UIComponentT<KeyT>> _map = new();
-        private List<UIComponentT<KeyT>> _enabledList = new();
-        private Stack<UIComponentT<KeyT>> _stack = new();
+        protected Dictionary<KeyT, UIComponentT<KeyT>> _map = new();
+        protected List<UIComponentT<KeyT>> _enabledList = new();
+        protected Stack<UIComponentT<KeyT>> _stack = new();
 
-        private void Awake()
+        protected void Awake()
         {
             Current = this;
             

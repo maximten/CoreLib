@@ -34,6 +34,7 @@ namespace CoreLib
             {
                 _stageEnterActions[stage]();
             }
+            PrevStage = Stage;
             Stage = stage;
         }
 
