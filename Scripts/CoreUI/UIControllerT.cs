@@ -21,7 +21,7 @@ namespace CoreUI
             foreach (var component in componentList)
             {
                 _map.Add(component.UIName, component);
-                component.gameObject.SetActive(false);
+                // component.gameObject.SetActive(false);
             }
         }
         
