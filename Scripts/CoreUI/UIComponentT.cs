@@ -46,5 +46,10 @@ namespace CoreUI
         {
             return _document;
         }
+
+        protected void SetText(string elName, string text)
+        {
+            Find<TextElement>(elName).text = text;
+        }
     }
 }
