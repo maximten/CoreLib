@@ -10,7 +10,6 @@ namespace CoreUI
         public static UIControllerT<KeyT> Current;
 
         protected Dictionary<KeyT, UIComponentT<KeyT>> _map = new();
-        protected List<UIComponentT<KeyT>> _enabledList = new();
         protected Stack<UIComponentT<KeyT>> _stack = new();
 
         protected void Awake()
@@ -21,17 +20,15 @@ namespace CoreUI
             foreach (var component in componentList)
             {
                 _map.Add(component.UIName, component);
-                // component.gameObject.SetActive(false);
             }
         }
         
         public void Clear()
         {
-            foreach (var component in _enabledList)
+            foreach (var component in _map.Values)
             {
                 component.gameObject.SetActive(false);
             }
-            _enabledList.Clear();
         }
         
         public void Render(KeyT ui)
@@ -40,7 +37,6 @@ namespace CoreUI
             _stack.Clear();
             var component = _map[ui];
             component.gameObject.SetActive(true);
-            _enabledList.Add(component);
             _stack.Push(component);
         }
         
@@ -49,7 +45,6 @@ namespace CoreUI
             Clear();
             var component = _map[ui];
             component.gameObject.SetActive(true);
-            _enabledList.Add(component);
             _stack.Push(component);
         }
 
@@ -59,7 +54,6 @@ namespace CoreUI
             _stack.Pop();
             var component = _stack.Peek();
             component.gameObject.SetActive(true);
-            _enabledList.Add(component);
         }
     }
 }
