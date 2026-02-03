@@ -51,5 +51,12 @@ namespace CoreUI
         {
             Find<TextElement>(elName).text = text;
         }
+
+        protected void SetText(string elName, string text, int fontSize)
+        {
+            var el = Find<TextElement>(elName);
+            el.text = text;
+            el.style.fontSize = fontSize;
+        }
     }
 }
