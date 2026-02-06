@@ -23,11 +23,22 @@ namespace CoreLib
         void Awake()
         {
             Current = this;
+        }
+
+        private void OnEnable()
+        {
             OnStageChange += ChangeStage;
             OnStagePush += PushStage;
             OnStagePop += PopStage;
         }
-        
+
+        private void OnDisable()
+        {
+            OnStageChange -= ChangeStage;
+            OnStagePush -= PushStage;
+            OnStagePop -= PopStage;
+        }
+
         void ChangeStage(StageT stage)
         {
             _stack.Clear();
